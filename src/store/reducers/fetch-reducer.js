@@ -2,6 +2,7 @@ import {
 	FETCH_INIT,
 	FETCH_SUCCESS,
 	FETCH_FAILED,
+	DELETE_CONTACT,
 } from "../actions/action-types";
 
 const initialState = {
@@ -33,6 +34,16 @@ export const fetchReducer = (state = initialState, { type, payload }) => {
 				isError: true,
 				error: payload,
 			};
+
+		case DELETE_CONTACT: {
+			const updatedContacts = state.contacts.filter(
+				(contact) => contact.id !== payload
+			);
+			return {
+				...state,
+				contacts: updatedContacts,
+			};
+		}
 
 		default:
 			return state;

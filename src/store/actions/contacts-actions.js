@@ -2,6 +2,7 @@ import {
 	FETCH_INIT,
 	FETCH_SUCCESS,
 	FETCH_FAILED,
+	DELETE_CONTACT,
 } from "../actions/action-types";
 
 function fetchInit() {
@@ -19,6 +20,12 @@ function fetchFailed(error) {
 	return {
 		type: FETCH_FAILED,
 		payload: error,
+	};
+}
+export function deleteContact(id) {
+	return {
+		type: DELETE_CONTACT,
+		payload: id,
 	};
 }
 

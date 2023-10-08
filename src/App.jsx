@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import "./App.css";
 import { fetchContacts } from "./store/actions/contacts-actions";
 import { useDispatch } from "react-redux";
+import ContactCard from "./components/ContactCard";
+import ContactsGrid from "./components/ContactsGrid";
+import Header from "./components/Header";
 
 function App() {
 	const dispatch = useDispatch();
@@ -13,12 +16,12 @@ function App() {
 	}, [dispatch]);
 
 	return (
-		<>
-			<header className="bg-slate-500 text-white text-5xl p-4">
-				<p>Heading</p>
-			</header>
-			<div className="bg-slate-200 h-[calc(100vh-80px)]">all contacts</div>
-		</>
+		<div className="h-screen overflow-hidden">
+			<Header />
+			<ContactsGrid className="bg-slate-200 h-[calc(100vh-80px)] p-5">
+				<ContactCard />
+			</ContactsGrid>
+		</div>
 	);
 }
 

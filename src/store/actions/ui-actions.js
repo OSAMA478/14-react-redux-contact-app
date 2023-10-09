@@ -1,8 +1,12 @@
-import { ADD_CONTACT, DELETE_CONTACT } from "./action-types";
+import {
+	ADD_CONTACT,
+	DELETE_CONTACT,
+	SET_FETCHED_CONTACTS,
+} from "./action-types";
 
 export function setFetchedContacts(data) {
 	return {
-		type: DELETE_CONTACT,
+		type: SET_FETCHED_CONTACTS,
 		payload: data,
 	};
 }

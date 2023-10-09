@@ -22,6 +22,7 @@ export const uiReducer = (state = initialState, { type, payload }) => {
 					phone: payload[key].phone,
 				});
 			}
+			console.log(payload, state.contacts);
 			return {
 				...state,
 				contacts: fetchedContact,

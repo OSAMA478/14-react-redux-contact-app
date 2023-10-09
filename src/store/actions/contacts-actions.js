@@ -3,6 +3,7 @@ import {
 	FETCH_SUCCESS,
 	FETCH_FAILED,
 } from "../actions/action-types";
+import { setFetchedContacts } from "./ui-actions";
 
 function fetchInit() {
 	return {
@@ -33,8 +34,9 @@ export const fetchContacts = () => {
 			const data = await res.json();
 
 			dispatch(fetchSuccess(data));
+			dispatch(setFetchedContacts(data));
 
-			console.log(data);
+			// console.log(data);
 		} catch (error) {
 			dispatch(fetchFailed(error));
 		}

@@ -6,19 +6,13 @@ import ContactCard from "./components/ContactCard";
 import ContactsGrid from "./components/ContactsGrid";
 import Header from "./components/Header";
 import Modal from "./components/Modal";
-import { setFetchedContacts } from "./store/actions/ui-actions";
 
 function App() {
 	const isModalShown = useSelector((state) => state.modal.isModalShown);
-	const contacts = useSelector((state) => state.fetch.contact);
-	console.log(contacts);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		console.log("useEffect started");
 		dispatch(fetchContacts());
-		dispatch(setFetchedContacts(contacts));
-		console.log("useEffect end");
 	}, [dispatch]);
 
 	return (

@@ -6,7 +6,7 @@ import {
 
 const initialState = {
 	isLoading: false,
-	contacts: [],
+	contacts: {},
 	isError: false,
 	error: "",
 };

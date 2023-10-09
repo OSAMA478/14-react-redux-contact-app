@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { showModal } from "../store/actions/modal-actions";
 
-const Header = ({ modalHandler }) => {
+const Header = () => {
+	const dispatch = useDispatch();
 	return (
-		<header className="bg-slate-500 text-white flex justify-between p-4">
-			<p className="font-bold text-5xl">Contact App</p>
+		<header className="flex justify-between p-4 text-white bg-slate-500">
+			<p className="text-5xl font-bold">Contact App</p>
 			<button
-				className="bg-slate-200 text-black rounded-lg p-2"
-				onClick={modalHandler}
+				className="p-2 text-black rounded-lg bg-slate-200"
+				onClick={() => dispatch(showModal())}
 			>
 				add contact
 			</button>

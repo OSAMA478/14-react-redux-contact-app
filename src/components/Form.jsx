@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postContacts } from "../store/actions/contacts-actions";
+import { addContact } from "../store/actions/ui-actions";
+import { hideModal } from "../store/actions/modal-actions";
 
 function MyForm() {
 	const [inputs, setInputs] = useState({});
+	const dispatch = useDispatch();
 
 	const handleChange = (event) => {
 		const name = event.target.name;
@@ -11,7 +16,19 @@ function MyForm() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		alert(inputs);
+		console.log(inputs);
+		dispatch(addContact({ ...inputs, id: Math.random() }));
+		setInputs({});
+
+		// dispatch(
+		// 	postContacts({
+		// 		address: "nawaz building",
+		// 		email: "osama.doe@example.com",
+		// 		firstName: "osama",
+		// 		lastName: "shiakh",
+		// 		phone: "8976748334",
+		// 	})
+		// );
 	};
 
 	return (
@@ -20,15 +37,15 @@ function MyForm() {
 			<div className="relative">
 				<input
 					type="text"
-					className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+					name="firstName"
+					value={inputs.firstName || ""}
+					onChange={handleChange}
+					className="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
 					placeholder="first name"
 				/>
 				<label
 					type="text"
-					name="firstName"
-					value={inputs.firstName || ""}
-					onChange={handleChange}
-					className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900"
+					className="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-900 bg-white -top-2 left-2"
 				>
 					First name
 				</label>
@@ -40,12 +57,12 @@ function MyForm() {
 					name="lastName"
 					value={inputs.lastName || ""}
 					onChange={handleChange}
-					className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+					className="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
 					placeholder="last name"
 				/>
 				<label
-					type="last-name"
-					className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900"
+					type="text"
+					className="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-900 bg-white -top-2 left-2"
 				>
 					Last name
 				</label>
@@ -54,15 +71,15 @@ function MyForm() {
 			<div className="relative">
 				<input
 					type="text"
-					className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+					name="email"
+					value={inputs.email || ""}
+					onChange={handleChange}
+					className="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
 					placeholder="email"
 				/>
 				<label
 					type="text"
-					name="email"
-					value={inputs.firstName || ""}
-					onChange={handleChange}
-					className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900"
+					className="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-900 bg-white -top-2 left-2"
 				>
 					email
 				</label>
@@ -71,15 +88,15 @@ function MyForm() {
 			<div className="relative">
 				<input
 					type="text"
-					className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+					name="phone"
+					value={inputs.phone || ""}
+					onChange={handleChange}
+					className="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
 					placeholder="phone number"
 				/>
 				<label
 					type="number"
-					name="phone"
-					value={inputs.firstName || ""}
-					onChange={handleChange}
-					className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900"
+					className="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-900 bg-white -top-2 left-2"
 				>
 					Phone number
 				</label>
@@ -88,33 +105,32 @@ function MyForm() {
 			<div className="relative">
 				<input
 					type="text"
-					className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+					name="address"
+					value={inputs.address || ""}
+					onChange={handleChange}
+					className="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
 					placeholder="phone number"
 				/>
 				<label
 					type="text"
-					name="address"
-					value={inputs.firstName || ""}
-					onChange={handleChange}
-					className="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900"
+					className="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-900 bg-white -top-2 left-2"
 				>
 					Address
 				</label>
 			</div>
 
 			{/* buttons */}
-			<div className="flex gap-2 justify-center">
+			<div className="flex justify-center gap-2">
 				<button
 					type="button"
-					// onClick={handleClose}
-					className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+					onClick={() => dispatch(hideModal())}
+					className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700"
 				>
 					Cancel
 				</button>
 				<button
-					type="button"
-					// onClick={addHandler}
-					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+					type="submit"
+					className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
 				>
 					Add
 				</button>

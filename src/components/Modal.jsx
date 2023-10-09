@@ -5,7 +5,7 @@ const Modal = ({ addHandler, handleClose, show, children }) => {
 
 	return (
 		<div className={showHideClassName}>
-			<section className="flex-col flex modal-main bg-white fixed w-80 h-auto top-1/2 left-1/2 rounded-3xl p-5 drop-shadow-xl transform -translate-x-1/2 -translate-y-1/2">
+			<section className="fixed flex flex-col h-auto p-5 transform -translate-x-1/2 -translate-y-1/2 bg-white modal-main w-80 top-1/2 left-1/2 rounded-xl drop-shadow-xl">
 				<Form />
 			</section>
 		</div>

@@ -47,3 +47,28 @@ export const fetchContacts = () => {
 		}
 	};
 };
+export const postContacts = (contact) => {
+	return async (dispatch) => {
+		dispatch(fetchInit());
+
+		try {
+			const res = await fetch(
+				"https://contact-app-87b13-default-rtdb.firebaseio.com/contacts.json",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(contact),
+				}
+			);
+			const data = await res.json();
+
+			dispatch(fetchSuccess([data]));
+
+			console.log(data);
+		} catch (error) {
+			dispatch(fetchFailed(error));
+		}
+	};
+};

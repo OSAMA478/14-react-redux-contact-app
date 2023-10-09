@@ -20,15 +20,7 @@ function MyForm() {
 		dispatch(addContact({ ...inputs, id: Math.random() }));
 		setInputs({});
 
-		// dispatch(
-		// 	postContacts({
-		// 		address: "nawaz building",
-		// 		email: "osama.doe@example.com",
-		// 		firstName: "osama",
-		// 		lastName: "shiakh",
-		// 		phone: "8976748334",
-		// 	})
-		// );
+		dispatch(postContacts({ ...inputs, id: Math.random() }));
 	};
 
 	return (

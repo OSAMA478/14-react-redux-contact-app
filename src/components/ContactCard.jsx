@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../store/actions/ui-actions";
+import { putContacts } from "../store/actions/contacts-actions";
 
 /* eslint-disable react/prop-types */
 const ContactCard = ({ contact }) => {
+	const putContact = useSelector((state) => state.ui.contacts);
 	const dispatch = useDispatch();
 	const { firstName, lastName, email, phone } = contact;
 	return (

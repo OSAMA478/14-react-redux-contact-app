@@ -25,6 +25,7 @@ const ContactCard = ({ contact }) => {
 					className="p-1 bg-red-500 rounded-md"
 					onClick={() => {
 						dispatch(deleteContact(contact.id));
+						dispatch(putContacts(putContact));
 					}}
 				>
 					Delete
